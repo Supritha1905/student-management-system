@@ -107,7 +107,6 @@ Installation
    npm install
 
 3. Configure environment
-   cp .env.example .env
    php artisan key:generate
 
 4. Configure database in .env
@@ -124,6 +123,7 @@ Installation
 
 6. Build assets
    npm run build
+   npm run dev
 
 7. Start the server
    php artisan serve
