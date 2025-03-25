@@ -50,19 +50,25 @@ class AdminAuthController extends Controller
     {
         $request->validate([
             'current_password' => 'required',
-            'password' => 'required|min:8|confirmed',
+            'password' => 'required|confirmed|min:8',
         ]);
-
+    
         $admin = Auth::guard('admin')->user();
-
+    
         if (!Hash::check($request->current_password, $admin->password)) {
-            return back()->withErrors(['current_password' => 'The current password is incorrect.']);
+            return back()->withErrors(['current_password' => 'Current password is incorrect']);
         }
-
+    
+        // Correct way to update password in Laravel
         $admin->update([
             'password' => Hash::make($request->password)
         ]);
-
-        return back()->with('success', 'Password changed successfully.');
+    
+        Auth::guard('admin')->logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+    
+        return redirect()->route('login')
+            ->with('success', 'Password updated successfully! Please login with your new password.');
     }
 }

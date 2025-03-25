@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="max-w-2xl mx-auto bg-white rounded-lg shadow-md p-6">
-    <h1 class="text-2xl font-bold mb-6">Edit Student</h1>
+    <h1 class="text-2xl text-[#EA624C] font-bold mb-6">Edit Student</h1>
     
     <form method="POST" action="{{ route('students.update', $student->id) }}" enctype="multipart/form-data">
         @csrf
@@ -72,8 +72,8 @@
         </div>
         
         <div class="mt-6 flex justify-end space-x-4">
-            <a href="{{ route('dashboard') }}" class="bg-gray-300 text-gray-700 px-4 py-2 rounded-lg hover:bg-gray-400">Cancel</a>
-            <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700">Update Student</button>
+            <a href="{{ route('dashboard') }}" class="bg-[#EA624C] text-white px-4 py-2 rounded-lg">Cancel</a>
+            <button type="submit" class="bg-[#813F98] text-white px-4 py-2 rounded-lg">Update Student</button>
         </div>
     </form>
 </div>

@@ -27,14 +27,24 @@
                 <td class="py-3 px-4">{{ $student->phone }}</td>
                 <td class="py-3 px-4">{{ $student->course }}</td>
                 <td class="py-3 px-4">
-                    <div class="flex space-x-2">
-                        <a href="{{ route('students.edit', $student->id) }}" class="bg-yellow-500 text-white px-3 py-1 rounded hover:bg-yellow-600">Edit</a>
-                        <form action="{{ route('students.destroy', $student->id) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this student?')">
+                    <div class="flex space-x-4">
+                        <!-- Edit Button -->
+                        <a href="{{ route('students.edit', $student->id) }}"
+                           class="text-[#EA624C] hover:text-[#d9513d] transition text-xl">
+                            <i class="fas fa-edit"></i>
+                        </a>
+                    
+                        <!-- Delete Button -->
+                        <form action="{{ route('students.destroy', $student->id) }}" method="POST"
+                              onsubmit="return confirm('Are you sure you want to delete this student?')">
                             @csrf
                             @method('DELETE')
-                            <button type="submit" class="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600">Delete</button>
+                            <button type="submit" class="text-[#813F98] hover:text-[#6f3382] transition text-xl">
+                                <i class="fas fa-trash-alt"></i>
+                            </button>
                         </form>
                     </div>
+                    
                 </td>
             </tr>
             @empty
