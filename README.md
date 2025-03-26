@@ -98,3 +98,9 @@ php artisan key:generate
 php artisan db:seed
 php artisan serve
 Access the application at: http://localhost:8000
+
+3. Admin Login Credentials
+=============================
+
+Username: admin
+Password: password123
