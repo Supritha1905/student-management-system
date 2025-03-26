@@ -69,122 +69,32 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 Student Management System
 ========================
 
-A Laravel-based student management system with admin authentication, student CRUD operations, and additional features.
+Setup Instructions
 
-Features
---------
-1. Admin Authentication
-   - Secure login system
-   - Change password functionality
-   - Protected admin dashboard
+1. Database Setup
+=====================
 
-2. Student Management
-   - Create, Read, Update, Delete (CRUD) operations
-   - Profile photo upload
-   - Bulk import via CSV
-   - Live search functionality
+Create a new MySQL database:
+CREATE DATABASE student_management;
 
-3. Search Functionality
-   - Real-time AJAX search
-   - Search by name or course
-   - No page reload required
+Configure your database credentials in the .env file:
 
-Database Setup in phpMyAdmin
---------------------------------
-Open phpMyAdmin (usually at http://localhost/phpmyadmin)
-Create a new database named student_management
-Character set: utf8mb4
-Collation: utf8mb4_unicode_ci
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=student_management
+DB_USERNAME=your_username
+DB_PASSWORD=your_password
 
-Installation
-------------
-1. Clone the repository
-   git clone <repository-url>
-   cd student-management-system
+run migration using command -  php artisan migrate
 
-2. Install dependencies
-   composer install
-   npm install
+2. Project Setup
+======================
 
-3. Configure environment
-   php artisan key:generate
-
-4. Configure database in .env
-   DB_CONNECTION=mysql
-   DB_HOST=127.0.0.1
-   DB_PORT=3306
-   DB_DATABASE=student_management
-   DB_USERNAME=root
-   DB_PASSWORD=
-
-5. Run migrations and seeders
-   php artisan migrate
-   php artisan db:seed --class=AdminSeeder
-
-6. Build assets
-   npm run build
-   npm run dev
-
-7. Start the server
-   php artisan serve
-
-Default Admin Credentials
-------------------------
-Username: admin
-Password: password123
-
-CSV Import Format
-----------------
-The CSV file for bulk student import should follow this format:
-
-name,email,phone,course
-John Doe,john@example.com,1234567890,Computer Science
-Jane Smith,jane@example.com,0987654321,Mathematics
-
-Note: Email addresses must be unique for each student.
-
-Directory Structure
-------------------
-student-management-system/
-├── app/
-│   ├── Http/
-│   │   ├── Controllers/
-│   │   │   ├── Auth/
-│   │   │   │   └── AdminAuthController.php
-│   │   │   └── StudentController.php
-│   │   └── Middleware/
-│   │       └── RedirectIfAdminAuthenticated.php
-│   └── Models/
-│       ├── Admin.php
-│       └── Student.php
-├── resources/
-│   └── views/
-│       ├── auth/
-│       │   ├── login.blade.php
-│       │   └── change-password.blade.php
-│       ├── students/
-│       │   ├── index.blade.php
-│       │   ├── create.blade.php
-│       │   └── edit.blade.php
-│       └── partials/
-│           ├── navbar.blade.php
-│           └── students_table.blade.php
-└── routes/
-    └── web.php
-
-Requirements
------------
-- PHP >= 8.2
-- Laravel 12.x
-- MySQL
-- Node.js & NPM
-- Composer
-
-Security
---------
-- CSRF protection
-- Input validation
-- File upload validation
-- Authenticated routes
-
-
+composer install
+npm install
+npm run dev
+php artisan key:generate
+php artisan db:seed
+php artisan serve
+Access the application at: http://localhost:8000
